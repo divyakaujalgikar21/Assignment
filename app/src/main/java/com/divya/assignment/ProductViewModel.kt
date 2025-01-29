@@ -7,17 +7,23 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class ProductViewModel : ViewModel() {
+class ProductViewModel(private val repository: ProductRepository) : ViewModel() {
 
-    private val repository = ProductRepository()
 
     private val _productResponse = MutableLiveData<Response<ProductResponse>>()
     val productResponse: LiveData<Response<ProductResponse>> get() = _productResponse
 
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> get() = _error
+
     fun fetchProductDetails(productId: String, otherId: String) {
         viewModelScope.launch {
             val response = repository.getProductDetails(productId, otherId)
-            _productResponse.postValue(response)
+            if (response.isSuccessful) {
+                _productResponse.postValue(response)
+            } else {
+                _error.postValue(response.errorBody()?.string())
+            }
         }
     }
 }
