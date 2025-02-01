@@ -9,5 +9,5 @@ interface ApiService {
     suspend fun getProductDetails(
         @Path("productId") productId: String,
         @Path("otherId") otherId: String
-    ): Response<ProductResponse>
+    ): Response<ProductData>
 }

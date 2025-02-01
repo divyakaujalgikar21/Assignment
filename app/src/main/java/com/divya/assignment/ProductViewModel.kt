@@ -10,8 +10,8 @@ import retrofit2.Response
 class ProductViewModel(private val repository: ProductRepository) : ViewModel() {
 
 
-    private val _productResponse = MutableLiveData<Response<ProductResponse>>()
-    val productResponse: LiveData<Response<ProductResponse>> get() = _productResponse
+    private val _productResponse = MutableLiveData<Response<ProductData>>()
+    val productResponse: LiveData<Response<ProductData>> get() = _productResponse
 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> get() = _error
