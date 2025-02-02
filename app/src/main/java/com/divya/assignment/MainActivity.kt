@@ -1,3 +1,4 @@
+// MainActivity.kt
 package com.divya.assignment
 
 import android.os.Bundle
@@ -17,20 +18,18 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this  // Set lifecycle owner
-        binding.product = null  // I
 
         // Observe LiveData
         productViewModel.productResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
-                response.body()?.let { product ->
+                response.body()?.data?.let { product ->
                     binding.product = product  // Bind API response to UI
-                    Log.d("product", "Product name: ${product.name}")
+                    Log.d("product", "Product name: ${product}")
                 }
             } else {
                 Log.e("API_ERROR", "Error: ${response.errorBody()?.string()}")
@@ -38,7 +37,5 @@ class MainActivity : AppCompatActivity() {
         })
 
         productViewModel.fetchProductDetails("6701", "253620")
-
-
     }
 }

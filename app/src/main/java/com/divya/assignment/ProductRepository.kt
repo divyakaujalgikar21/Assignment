@@ -5,7 +5,7 @@ import retrofit2.Response
 
 class ProductRepository {
 
-    suspend fun getProductDetails(productId: String, otherId: String): Response<ProductData> {
+    suspend fun getProductDetails(productId: String, otherId: String): Response<ProductResponse> {
         return try {
             val response = RetrofitInstance.apiService.getProductDetails(productId, otherId)
 
