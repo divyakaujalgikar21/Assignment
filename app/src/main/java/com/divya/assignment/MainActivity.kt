@@ -1,4 +1,3 @@
-// MainActivity.kt
 package com.divya.assignment
 
 import android.os.Bundle
@@ -7,14 +6,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.viewpager2.widget.ViewPager2
 import com.divya.assignment.databinding.ActivityMainBinding
+import me.relex.circleindicator.CircleIndicator3
 
 class MainActivity : AppCompatActivity() {
 
     private val productViewModel: ProductViewModel by viewModels {
-        ProductViewModelFactory(
-            ProductRepository()
-        )
+        ProductViewModelFactory(ProductRepository())
     }
     private lateinit var binding: ActivityMainBinding
 
@@ -22,14 +21,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.lifecycleOwner = this  // Set lifecycle owner
+        binding.lifecycleOwner = this
 
-        // Observe LiveData
+        val imageCarousel: ViewPager2 = findViewById(R.id.imageCarousel)
+        val circleIndicator: CircleIndicator3 = findViewById(R.id.circleIndicator)
+
         productViewModel.productResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
                 response.body()?.data?.let { product ->
-                    binding.product = product  // Bind API response to UI
-                    Log.d("product", "Product name: ${product}")
+                    binding.product = product
+
+                    val images = product.images
+                    val adapter = CarouselAdapter(images)
+                    imageCarousel.adapter = adapter
+
+                    circleIndicator.setViewPager(imageCarousel)
+
+                    Log.d("product", "Product name: ${product.name}")
                 }
             } else {
                 Log.e("API_ERROR", "Error: ${response.errorBody()?.string()}")
