@@ -2,6 +2,8 @@ package com.divya.assignment
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,6 +14,7 @@ import me.relex.circleindicator.CircleIndicator3
 
 class MainActivity : AppCompatActivity() {
 
+    private var quantity = 1
     private val productViewModel: ProductViewModel by viewModels {
         ProductViewModelFactory(ProductRepository())
     }
@@ -22,6 +25,22 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
+
+        val decrementButton = findViewById<Button>(R.id.minus)
+        val incrementButton = findViewById<Button>(R.id.plus)
+        val quantityButton = findViewById<TextView>(R.id.quantitytextview)
+
+        decrementButton.setOnClickListener {
+            if (quantity > 1) {
+                quantity--
+                quantityButton.text = quantity.toString()
+            }
+        }
+
+        incrementButton.setOnClickListener {
+            quantity++
+            quantityButton.text = quantity.toString()
+        }
 
         val imageCarousel: ViewPager2 = findViewById(R.id.imageCarousel)
         val circleIndicator: CircleIndicator3 = findViewById(R.id.circleIndicator)
