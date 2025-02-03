@@ -1,4 +1,4 @@
-package com.divya.assignment.Module
+package com.divya.assignment
 
 import java.math.BigDecimal
 import java.math.RoundingMode

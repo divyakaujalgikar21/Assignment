@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.divya.assignment.NetWork.ProductRepository
-import com.divya.assignment.Module.ProductResponse
+import com.divya.assignment.ProductResponse
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
