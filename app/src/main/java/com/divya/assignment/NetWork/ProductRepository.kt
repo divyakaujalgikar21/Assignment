@@ -1,6 +1,7 @@
-package com.divya.assignment
+package com.divya.assignment.NetWork
 
 import android.util.Log
+import com.divya.assignment.Module.ProductResponse
 import retrofit2.Response
 
 class ProductRepository {

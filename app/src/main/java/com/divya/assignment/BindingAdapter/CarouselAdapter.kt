@@ -1,4 +1,4 @@
-package com.divya.assignment
+package com.divya.assignment.BindingAdapter
 
 
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.divya.assignment.R
 
 class CarouselAdapter(private val imageList: List<String>) : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 

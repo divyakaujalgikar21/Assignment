@@ -1,5 +1,6 @@
-package com.divya.assignment
+package com.divya.assignment.NetWork
 
+import com.divya.assignment.Module.ProductResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

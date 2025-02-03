@@ -1,4 +1,7 @@
-package com.divya.assignment
+package com.divya.assignment.Module
+
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 data class ProductResponse(
     val status: Int,
@@ -14,4 +17,10 @@ data class ProductData(
     val final_price: String,
     val description: String?,
     val images: List<String>
-)
+) {
+    fun getRoundedPrice(): String {
+        val priceBigDecimal = BigDecimal(price)
+        val roundedPrice = priceBigDecimal.setScale(2, RoundingMode.UP)
+        return roundedPrice.toString()
+    }
+}

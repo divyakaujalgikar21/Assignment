@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="product"
-            type="com.divya.assignment.ProductData" />
+            type="com.divya.assignment.Module.ProductData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,8 +21,8 @@
             android:id="@+id/backarrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
             android:src="@drawable/baseline_arrow_back_ios_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -30,9 +31,9 @@
             android:id="@+id/header_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Once Collection Weekly"
-            android:textSize="20sp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/once_collection_weekly_text"
+            android:textSize="@dimen/_20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +43,8 @@
             android:id="@+id/shop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginEnd="@dimen/_16dp"
             android:src="@drawable/baseline_shopping_bag_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,11 +53,19 @@
             android:id="@+id/favourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/_16dp"
             android:src="@drawable/baseline_favorite_border_24"
-            app:layout_constraintEnd_toStartOf="@id/shop_button"
+            app:layout_constraintEnd_toStartOf="@id/share_product"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/share_product"
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:src="@drawable/baseline_share_24"
+            app:layout_constraintEnd_toStartOf="@id/shop_button"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.viewpager2.widget.ViewPager2
@@ -69,7 +78,7 @@
             android:id="@+id/circleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageCarousel" />
@@ -78,12 +87,12 @@
             android:id="@+id/anethesia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="ANESTHESIA"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/anesthesia"
             android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
             android:textStyle="bold"
-            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/circleIndicator" />
 
@@ -91,12 +100,12 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:text='@{product.price + " KWD"}'
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:text='@{product.getRoundedPrice() +  " KWD"}'
             android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
             android:textStyle="bold"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/circleIndicator" />
 
@@ -104,10 +113,10 @@
             android:id="@+id/once_collection_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Once Collection Weekly"
-            android:textColor="#7f7f7f"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/once_collection_weekly_text"
+            android:textColor="@color/grey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/anethesia" />
 
@@ -115,107 +124,120 @@
             android:id="@+id/sku"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_8dp"
             android:text='@{"SKU: " + product.sku}'
-            android:textColor="#a9a9a9"
+            android:textColor="@color/light_grey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/once_collection_text" />
 
-
-        <TextView
-            android:id="@+id/Quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="Quantity:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sku" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/minus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/rounded_button_lefft"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Quantity" />
-
-        <TextView
-            android:id="@+id/quantitytextview"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/rounded_middle"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/minus"
-            app:layout_constraintTop_toBottomOf="@id/Quantity" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/plus"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-         android:background="@drawable/rounded_button_right"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/quantitytextview"
-            app:layout_constraintTop_toBottomOf="@id/Quantity" />
-
-        <TextView
-            android:id="@+id/Product_Information"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="PRODUCT INFORMATION"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/minus" />
-
-<androidx.core.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Product_Information">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+            app:layout_constraintTop_toBottomOf="@id/sku">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/Quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/quantity"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/minus"
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:layout_marginStart="@dimen/_16dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:background="@drawable/rounded_button_lefft"
+                    android:text="@string/minus_sign"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/Quantity" />
 
-            <TextView
-                android:id="@+id/product_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="@{product.description}"
-                android:textColor="#7f7f7f"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Product_Information" />
+                <TextView
+                    android:id="@+id/quantitytextview"
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:background="@drawable/rounded_middle"
+                    android:gravity="center"
+                    android:text="@string/one"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_20sp"
+                    app:layout_constraintStart_toEndOf="@id/minus"
+                    app:layout_constraintTop_toBottomOf="@id/Quantity" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/plus"
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:background="@drawable/rounded_button_right"
+                    android:text="@string/plus_sign"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_20sp"
+                    app:layout_constraintStart_toEndOf="@id/quantitytextview"
+                    app:layout_constraintTop_toBottomOf="@id/Quantity" />
+
+                <TextView
+                    android:id="@+id/Product_Information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16dp"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:text="@string/product_information"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/minus" />
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:src="@drawable/baseline_keyboard_arrow_down_24"
+                    android:onClick="toggleDescription"
+                    app:layout_constraintTop_toBottomOf="@id/minus"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <WebView
+                    android:id="@+id/product_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_16dp"
+                    android:autoLink="web"
+                    android:textColor="@color/grey"
+                    app:htmlContent="@{product.description}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/Product_Information"
+                    tools:ignore="WebViewLayout" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_margin="@dimen/_16dp"
+                    android:background="@color/grey"
+                    app:layout_constraintTop_toBottomOf="@id/product_description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:src="@drawable/baseline_keyboard_arrow_up_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/minus" />
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/bottom_layout"
@@ -224,31 +246,23 @@
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="16dp"
-                android:background="#7f7f7f"
-                app:layout_constraintTop_toBottomOf="@id/scrollview" />
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/share_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Share"
+                android:layout_margin="@dimen/_16dp"
+                android:text="@string/share"
                 android:backgroundTint="@color/white"
                 android:shadowColor="@color/black"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/addtocart_button"
+                android:id="@+id/add_tocart_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="add to bag"
+                android:layout_margin="@dimen/_16dp"
+                android:text="@string/add_to_bag"
                 android:backgroundTint="@color/black"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Assignment</string>
+    <string name="once_collection_weekly_text">Once Collection Weekly</string>
+    <string name="anesthesia">ANESTHESIA</string>
+    <string name="quantity">Quantity:</string>
+    <string name="minus_sign">-</string>
+    <string name="one">1</string>
+    <string name="plus_sign">+</string>
+    <string name="product_information">PRODUCT INFORMATION</string>
+    <string name="share">Share</string>
+    <string name="add_to_bag">add to bag</string>
 </resources>

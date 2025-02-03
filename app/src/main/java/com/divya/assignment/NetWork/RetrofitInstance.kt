@@ -1,4 +1,4 @@
-package com.divya.assignment
+package com.divya.assignment.NetWork
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
